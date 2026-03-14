@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow p-4">
+            <h3 class="text-success mb-4">Report a Found Item</h3>
+            <form method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Item Name</label>
+                    <input type="text" name="item_name" class="form-control" placeholder="e.g. Wallet, iPhone 13" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Category</label>
+                    <select name="category" class="form-select">
+                        <option>Electronics</option>
+                        <option>Accessories</option>
+                        <option>Documents</option>
+                        <option>Books</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Location Found</label>
+                    <input type="text" name="location_found" class="form-control" placeholder="e.g. Library 2nd Floor" required>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Date Found</label>
+                        <input type="date" name="date_found" class="form-control" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Your Name (Finder)</label>
+                    <input type="text" name="found_by" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Contact Information</label>
+                    <input type="text" name="contact" class="form-control" placeholder="Phone or Email" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea name="description" class="form-control" rows="2"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Submit Found Report</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

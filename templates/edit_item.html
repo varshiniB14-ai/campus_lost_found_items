@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3>Edit Item Details</h3>
+                <a href="/" class="btn btn-sm btn-secondary">Cancel</a>
+            </div>
+            <form method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Item Name</label>
+                    <input type="text" name="item_name" class="form-control" value="{{ item.item_name }}" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Category</label>
+                    <select name="category" class="form-select">
+                        <option value="Electronics" {% if item.category == 'Electronics' %}selected{% endif %}>Electronics</option>
+                        <option value="Accessories" {% if item.category == 'Accessories' %}selected{% endif %}>Accessories</option>
+                        <option value="Documents" {% if item.category == 'Documents' %}selected{% endif %}>Documents</option>
+                        <option value="Other" {% if item.category == 'Other' %}selected{% endif %}>Other</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Location</label>
+                    <input type="text" name="location" class="form-control" value="{{ item.location }}" required>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Date</label>
+                        <input type="date" name="date" class="form-control" value="{{ item.date }}" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Status</label>
+                        <select name="status" class="form-select">
+                            <option value="Lost" {% if item.status == 'Lost' %}selected{% endif %}>Lost</option>
+                            <option value="Found" {% if item.status == 'Found' %}selected{% endif %}>Found</option>
+                            <option value="Returned" {% if item.status == 'Returned' %}selected{% endif %}>Returned</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Reported By</label>
+                    <input type="text" name="reported_by" class="form-control" value="{{ item.reported_by }}" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Contact Info</label>
+                    <input type="text" name="contact" class="form-control" value="{{ item.contact }}" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Update Record</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

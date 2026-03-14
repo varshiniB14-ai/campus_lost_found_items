@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-success"><i class="bi bi-search"></i> Found Items List</h2>
+    <a href="/report_found" class="btn btn-success shadow-sm">
+        <i class="bi bi-plus-circle"></i> + Report Found Item
+    </a>
+</div>
+
+<div class="card shadow border-0">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-success">
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Category</th>
+                        <th>Location Found</th>
+                        <th>Date Found</th>
+                        <th>Finder Name</th>
+                        <th>Contact</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td>
+                            <div class="fw-bold text-dark">{{ item.item_name }}</div>
+                            <small class="text-muted">{{ item.description[:50] }}{% if item.description|length > 50 %}...{% endif %}</small>
+                        </td>
+                        <td><span class="badge bg-info text-dark">{{ item.category }}</span></td>
+                        <td><i class="bi bi-geo-alt"></i> {{ item.location_found }}</td>
+                        <td>{{ item.date_found }}</td>
+                        <td>{{ item.found_by }}</td>
+                        <td><span class="text-primary">{{ item.contact }}</span></td>
+                        <td class="text-center">
+                            <a href="/delete_found/{{ item._id }}" 
+                               class="btn btn-sm btn-outline-danger" 
+                               onclick="return confirm('Are you sure you want to delete this report?')">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center py-5">
+                            <div class="text-muted">
+                                <i class="bi bi-inbox display-4"></i>
+                                <p class="mt-2">No items have been reported as found yet.</p>
+                                <a href="/report_found" class="btn btn-sm btn-link text-success">Be the first to report a found item</a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+{% endblock %}

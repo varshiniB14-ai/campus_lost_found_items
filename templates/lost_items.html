@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="text-danger">Lost Items List</h2>
+    <a href="/report_lost" class="btn btn-danger">+ Report Lost Item</a>
+</div>
+
+<div class="card shadow">
+    <div class="table-responsive">
+        <table class="table table-hover mb-0 align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Item Name</th>
+                    <th>Category</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th>Reported By</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td><strong>{{ item.item_name }}</strong></td>
+                    <td>{{ item.category }}</td>
+                    <td>{{ item.location }}</td>
+                    <td>
+                        {% if item.status == 'Lost' %}
+                        <span class="badge bg-danger">Lost</span>
+                        {% else %}
+                        <span class="badge bg-success">Found/Resolved</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ item.reported_by }}</td>
+                    <td class="text-center">
+                        {% if item.status == 'Lost' %}
+                        <a href="/mark_found/{{ item._id }}" class="btn btn-sm btn-success me-1">Mark as Found</a>
+                        {% endif %}
+                        <a href="/delete_lost/{{ item._id }}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete this record?')">Delete</a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6" class="text-center py-4 text-muted">No lost items reported yet.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3 shadow-sm border">
+    <div class="container-fluid py-5 text-center">
+        <h1 class="display-5 fw-bold">Campus Lost & Found</h1>
+        <p class="fs-4">A simple and efficient way to reunite students with their belongings.</p>
+        <hr class="my-4">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <a href="/report_lost" class="btn btn-danger btn-lg px-4 me-md-2">I Lost Something</a>
+            <a href="/report_found" class="btn btn-success btn-lg px-4">I Found Something</a>
+        </div>
+    </div>
+</div>
+
+<div class="row text-center">
+    <div class="col-md-4">
+        <div class="card p-4 shadow-sm">
+            <h3 class="text-danger">Lost</h3>
+            <p>Check the list of items reported lost by others.</p>
+            <a href="/lost_items" class="btn btn-outline-danger">View Lost List</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-4 shadow-sm">
+            <h3 class="text-success">Found</h3>
+            <p>Browse items that have been found across campus.</p>
+            <a href="/found_items" class="btn btn-outline-success">View Found List</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-4 shadow-sm border-warning">
+            <h3 class="text-warning text-dark">Alerts</h3>
+            <p>Check if our system has found a potential match for you!</p>
+            <a href="/alerts" class="btn btn-warning text-dark">Check Alerts</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

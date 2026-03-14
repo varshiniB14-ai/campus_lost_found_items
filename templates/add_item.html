@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow p-4">
+            <h3>Report an Item</h3>
+            <form method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Item Name</label>
+                    <input type="text" name="item_name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Category</label>
+                    <select name="category" class="form-select">
+                        <option>Electronics</option>
+                        <option>Accessories</option>
+                        <option>Documents</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Location Found/Lost</label>
+                    <input type="text" name="location" class="form-control" required>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Date</label>
+                        <input type="date" name="date" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Status</label>
+                        <select name="status" class="form-select">
+                            <option value="Lost">Lost</option>
+                            <option value="Found">Found</option>
+                            <option value="Returned">Returned</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Reported By</label>
+                    <input type="text" name="reported_by" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Contact Info</label>
+                    <input type="text" name="contact" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Submit Report</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

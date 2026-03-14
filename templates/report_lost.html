@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow p-4 border-danger">
+            <h3 class="text-danger mb-4">Report a Lost Item</h3>
+            <form method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Item Name</label>
+                    <input type="text" name="item_name" class="form-control" placeholder="e.g. Blue Backpack, Spectacles" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Category</label>
+                    <select name="category" class="form-select">
+                        <option>Electronics</option>
+                        <option>Accessories</option>
+                        <option>Documents</option>
+                        <option>Books</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Location Lost</label>
+                    <input type="text" name="location" class="form-control" placeholder="e.g. Cafeteria, Room 402" required>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Date Lost</label>
+                        <input type="date" name="date_lost" class="form-control" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Your Name</label>
+                    <input type="text" name="reported_by" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Contact Information</label>
+                    <input type="text" name="contact" class="form-control" placeholder="Phone or Email" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea name="description" class="form-control" rows="2" placeholder="Describe unique marks, color, brand..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-danger w-100">Submit Lost Report</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
